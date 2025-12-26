@@ -16,20 +16,25 @@
     <header>Micro-Frontend Shell</header>
     <div class="container">
         <aside>
-            <button onclick="loadApp('app1.html')">Load App 1</button>
-            <button onclick="loadApp('app2.html')">Load App 2</button>
+            <button onclick="loadApp('page1.html')">Load App 1</button>
+            <button onclick="loadApp('page2.html')">Load App 2</button>
         </aside>
         <main>
             <iframe id="content-frame" src=""></iframe>
         </main>
     </div>
-    
+
     <script>
         function loadApp(url) {
             document.getElementById('content-frame').src = url;
         }
-        
+
         // TODO: Add listener for postMessage
+        window.addEventListener('message', (event) => {
+            if (event.data.type === 'changeColor') {
+                document.body.style.backgroundColor = event.data.color;
+            }
+        });
     </script>
 </body>
 </html>

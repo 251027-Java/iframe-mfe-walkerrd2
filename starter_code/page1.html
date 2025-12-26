@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App 1</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f0f0f0; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Micro-Frontend 1</h1>
+    <p>This is the first sub-application.</p>
+
+    <button id="colorBtn">Change Shell Color</button>
+
+    <script>
+        document.getElementById('colorBtn').addEventListener('click', () => {
+            window.parent.postMessage({ type: 'changeColor', color: '#ffcccc' }, '*');
+        });
+    </script>
+</body>
+</html>
